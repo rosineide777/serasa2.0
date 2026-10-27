@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificação</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonte Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col items-center justify-center p-4 m-0 text-gray-900 antialiased">
+
+    <!-- Container Centralizado (Sem Modal/Card) -->
+    <main class="w-full max-w-[400px] mx-auto flex flex-col items-start relative">
+        
+
+        <!-- Logotipo (Substituído pela imagem informada) -->
+        <div class="mb-5 flex justify-start w-full">
+            <img src="https://i.postimg.cc/23LGpzZ3/icone.png" alt="Logotipo" class="w-[70px] h-[70px] object-contain">
+        </div>
+
+        <!-- Título Principal (Alinhado à esquerda) -->
+        <h1 class="text-xl font-bold text-[#1e293b] mb-6 text-left w-full tracking-tight">
+            Digite seus dados
+        </h1>
+
+        <!-- Formulário -->
+        <form id="startForm" class="w-full text-left space-y-4">
+            
+            <!-- Campo 1: Digite seu nome -->
+            <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1.5">Digite seu NOME:</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    placeholder="Seu nome completo" 
+                    class="w-full px-4 py-3.5 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#e61c7e] focus:ring-1 focus:ring-[#e61c7e] text-sm transition-all shadow-sm"
+                >
+            </div>
+
+            <!-- Campo 2: Digite seu CPF -->
+            <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1.5">Digite seu CPF:</label>
+                <input 
+                    type="text" 
+                    id="cpf" 
+                    placeholder="000.000.000-00" 
+                    maxlength="14"
+                    class="w-full px-4 py-3.5 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#e61c7e] focus:ring-1 focus:ring-[#e61c7e] text-sm transition-all shadow-sm"
+                >
+            </div>
+
+            <!-- Div de Mensagem de Erro -->
+            <div id="formError" class="text-red-500 text-xs font-semibold text-center hidden"></div>
+
+            <!-- Toggle Switch 'Lembrar CPF' -->
+            <div class="flex items-center gap-3 py-1">
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="rememberCpf" class="sr-only peer">
+                    <div class="w-10 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#e61c7e]"></div>
+                </label>
+                <span class="text-xs text-gray-600 font-medium">Lembrar CPF para o próximo acesso</span>
+            </div>
+
+            <!-- Botão Continuar -->
+            <button 
+                type="submit" 
+                id="btnSubmit"
+                class="w-full bg-[#d0d3db] text-[#6b7280] font-semibold py-3.5 px-6 rounded-2xl transition-all duration-200 text-sm mt-4 cursor-not-allowed block text-center"
+            >
+                Continuar
+            </button>
+        </form>
+
+        <!-- Links e Rodapé -->
+        <div class="mt-10 text-center space-y-3 w-full">
+            <p class="text-xs font-bold text-gray-900">
+                <a href="#" id="openTermsModal" class="hover:underline">Termos de Uso e Política de Privacidade</a>
+            </p>
+        </div>
+
+    </main>
+
+    <!-- Modal de Termos de Uso e Política de Privacidade -->
+    <div id="termsModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-[500px] w-full p-6 relative shadow-2xl max-h-[85vh] flex flex-col">
+            
+            <!-- Cabeçalho do Modal -->
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h2 class="text-lg font-bold text-gray-900">Termos de Uso e Política de Privacidade</h2>
+                <!-- Botão X para Fechar na ponta do modal -->
+                <button id="closeTermsModal" class="text-gray-400 hover:text-gray-600 transition-colors p-1" aria-label="Fechar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Conteúdo dos Termos com Scroll -->
+            <div class="overflow-y-auto text-xs text-gray-600 space-y-3 pr-2 flex-1">
+                <p>Ao utilizar este serviço, você concorda com a coleta e uso das suas informações pessoais estritamente para fins de validação de identidade e acesso ao sistema.</p>
+                
+                <h3 class="font-bold text-gray-800 text-sm mt-2">1. Coleta de Dados</h3>
+                <p>Coletamos seu Nome Completo e CPF para validar o seu acesso à plataforma. Os dados informados são tratados em conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
+                
+                <h3 class="font-bold text-gray-800 text-sm mt-2">2. Uso das Informações</h3>
+                <p>Seus dados não serão compartilhados com terceiros não autorizados ou utilizados para fins publicitários sem o seu consentimento prévio.</p>
+                
+                <h3 class="font-bold text-gray-800 text-sm mt-2">3. Segurança</h3>
+                <p>Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados contra acessos não autorizados, perda ou destruição acidental.</p>
+            </div>
+
+            <!-- Botão Entendido -->
+            <div class="mt-5 pt-3 border-t">
+                <button id="btnAcceptTerms" class="w-full bg-[#e61c7e] text-white font-bold py-2.5 rounded-xl hover:bg-[#c8146c] transition-all text-xs">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de Validação e Estilização Dinâmica -->
+    <script>
+        const form = document.getElementById("startForm");
+        const nameInput = document.getElementById("name");
+        const cpfInput = document.getElementById("cpf");
+        const btnSubmit = document.getElementById("btnSubmit");
+        const formError = document.getElementById("formError");
+
+        /* Força nome em caixa alta */
+        nameInput.addEventListener("input", function () {
+            this.value = this.value.toUpperCase();
+            checkInputs();
+        });
+
+        /* Máscara de CPF */
+        cpfInput.addEventListener("input", function () {
+            let value = this.value.replace(/\D/g, "").slice(0, 11);
+            value = value.replace(/(\d{3})(\d)/, "$1.$2");
+            value = value.replace(/(\d{3})(\d)/, "$1.$2");
+            value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+            this.value = value;
+            checkInputs();
+        });
+
+        /* Ativa o botão quando os campos forem preenchidos */
+        function checkInputs() {
+            const nameValid = nameInput.value.trim().length >= 3;
+            const cpfValid = cpfInput.value.replace(/\D/g, "").length === 11;
+
+            if (nameValid && cpfValid) {
+                btnSubmit.classList.remove("bg-[#d0d3db]", "text-[#6b7280]", "cursor-not-allowed");
+                btnSubmit.classList.add("bg-[#e61c7e]", "text-white", "hover:bg-[#c8146c]", "cursor-pointer", "shadow-md");
+            } else {
+                btnSubmit.classList.add("bg-[#d0d3db]", "text-[#6b7280]", "cursor-not-allowed");
+                btnSubmit.classList.remove("bg-[#e61c7e]", "text-white", "hover:bg-[#c8146c]", "cursor-pointer", "shadow-md");
+            }
+        }
+
+        /* Envio do Formulário */
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const name = nameInput.value.trim();
+            const cpf = cpfInput.value.trim();
+
+            if (name.length < 3) {
+                formError.textContent = "Informe seu nome completo.";
+                formError.classList.remove("hidden");
+                return;
+            }
+
+            if (cpf.replace(/\D/g, "").length !== 11) {
+                formError.textContent = "Informe o CPF no formato correto.";
+                formError.classList.remove("hidden");
+                return;
+            }
+
+            formError.classList.add("hidden");
+
+            sessionStorage.setItem("chat_demo_name", name);
+            sessionStorage.setItem("chat_demo_cpf", cpf);
+
+            window.location.href = "chat.html";
+        });
+
+        /* Controle do Modal de Termos de Uso */
+        const termsModal = document.getElementById("termsModal");
+        const openTermsModal = document.getElementById("openTermsModal");
+        const closeTermsModal = document.getElementById("closeTermsModal");
+        const btnAcceptTerms = document.getElementById("btnAcceptTerms");
+
+        // Abrir modal
+        openTermsModal.addEventListener("click", function (e) {
+            e.preventDefault();
+            termsModal.classList.remove("hidden");
+            termsModal.classList.add("flex");
+        });
+
+        // Fechar modal no X
+        closeTermsModal.addEventListener("click", function () {
+            termsModal.classList.add("hidden");
+            termsModal.classList.remove("flex");
+        });
+
+        // Fechar modal no botão de confirmação
+        btnAcceptTerms.addEventListener("click", function () {
+            termsModal.classList.add("hidden");
+            termsModal.classList.remove("flex");
+        });
+
+        // Fechar modal ao clicar fora da caixa do modal
+        termsModal.addEventListener("click", function (e) {
+            if (e.target === termsModal) {
+                termsModal.classList.add("hidden");
+                termsModal.classList.remove("flex");
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Atendimento</title>
+
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/BZMVKbZ5/logo2.webp">
+
+
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+
+    <style>
+
+        /*
+        =========================================================
+        NOVO TOPO
+        =========================================================
+        */
+
+        .gov-top {
+
+            width: 100%;
+            min-height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-sizing: border-box;
+
+            padding: 10px 24px;
+
+            margin: 0;
+
+            background: #ec8fd0;
+
+            border-bottom: 1px solid #e5e5e5;
+
+        }
+
+
+        /*
+        =========================================================
+        LOGO
+        =========================================================
+        */
+
+        .gov-logo {
+
+            height: 48px;
+            width: auto;
+
+            display: block;
+
+            object-fit: contain;
+
+            flex-shrink: 0;
+
+        }
+
+
+        /*
+        =========================================================
+        ÁREA DO PERFIL
+        =========================================================
+        */
+
+        .gov-profile {
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            text-align: right;
+
+            /*
+            Impede que o conteúdo ultrapasse
+            a área disponível.
+            */
+
+            min-width: 0;
+
+            max-width: 50%;
+
+        }
+
+
+        /*
+        =========================================================
+        INFORMAÇÕES DO PERFIL
+        =========================================================
+        */
+
+        .gov-profile-info {
+
+            display: flex;
+            flex-direction: column;
+
+            line-height: 1.2;
+
+            min-width: 0;
+
+            /*
+            Permite que o nome quebre
+            sem invadir o ícone.
+            */
+
+            overflow: hidden;
+
+        }
+
+
+        /*
+        =========================================================
+        NOME DO CLIENTE
+        =========================================================
+        */
+
+        .gov-profile-name {
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            color: #222222;
+
+            /*
+            O nome pode quebrar em várias linhas.
+            */
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
+
+            /*
+            Evita que o texto seja
+            empurrado para cima do ícone.
+            */
+
+            max-width: 100%;
+
+        }
+
+
+        /*
+        =========================================================
+        ÍCONE DO USUÁRIO
+        =========================================================
+        */
+
+        .gov-profile-icon {
+
+            width: 42px;
+            height: 42px;
+
+            min-width: 42px;
+            min-height: 42px;
+
+            max-width: 42px;
+            max-height: 42px;
+
+            border-radius: 50%;
+
+            background: #eeeeee;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+
+            /*
+            Nunca deixa o ícone
+            ser comprimido pelo nome.
+            */
+
+            flex-shrink: 0;
+
+        }
+
+
+        /*
+        =========================================================
+        ÍCONE INTERNO
+        =========================================================
+        */
+
+        .user-icon {
+
+            width: 18px;
+            height: 18px;
+
+            position: relative;
+
+            display: block;
+
+        }
+
+
+        .user-icon::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #777777;
+
+            top: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+        }
+
+
+        .user-icon::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 14px;
+            height: 8px;
+
+            border-radius: 8px 8px 4px 4px;
+
+            background: #777777;
+
+            bottom: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+        }
+
+
+        /*
+        =========================================================
+        IMPORTANTE
+        =========================================================
+        */
+
+        .gov-top + .chat-shell {
+
+            margin-top: 0 !important;
+
+        }
+
+
+        /*
+        =========================================================
+        RESPONSIVO
+        =========================================================
+        */
+
+        @media (max-width: 600px) {
+
+            .gov-top {
+
+                min-height: 64px;
+
+                padding: 8px 14px;
+
+            }
+
+
+            .gov-logo {
+
+                height: 40px;
+
+            }
+
+
+            .gov-profile {
+
+                gap: 7px;
+
+                /*
+                Reserva espaço suficiente
+                para o nome e o ícone.
+                */
+
+                max-width: 65%;
+
+            }
+
+
+            .gov-profile-icon {
+
+                width: 36px;
+                height: 36px;
+
+                min-width: 36px;
+                min-height: 36px;
+
+                max-width: 36px;
+                max-height: 36px;
+
+                font-size: 18px;
+
+            }
+
+
+            .gov-profile-name {
+
+                font-size: 13px;
+
+                /*
+                Mantém o nome dentro
+                da área disponível.
+                */
+
+                line-height: 1.2;
+
+            }
+
+
+            .user-icon {
+
+                width: 16px;
+                height: 16px;
+
+            }
+
+
+            .user-icon::before {
+
+                width: 6px;
+                height: 6px;
+
+            }
+
+
+            .user-icon::after {
+
+                width: 13px;
+                height: 7px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="chat-page">
+
+
+    <!--
+    =========================================================
+    TOPO
+    =========================================================
+    -->
+
+    <header class="gov-top">
+
+
+        <img
+            class="gov-logo"
+            src="https://i.postimg.cc/BZMVKbZ5/logo2.webp"
+            alt="Logo"
+        >
+
+
+        <div class="gov-profile">
+
+
+            <div class="gov-profile-info">
+
+
+                <strong
+                    id="gov-profile-name"
+                    class="gov-profile-name"
+                >
+                    Usuário
+                </strong>
+
+
+            </div>
+
+
+            <div
+                class="gov-profile-icon"
+                aria-hidden="true"
+            >
+
+                <span class="user-icon"></span>
+
+            </div>
+
+
+        </div>
+
+
+    </header>
+
+
+    <!--
+    =========================================================
+    CHAT
+    =========================================================
+    -->
+
+    <main class="chat-shell">
+
+
+        <header class="chat-header">
+
+
+            <img
+                class="profile-photo"
+                src="/imagens/perfil2.png"
+                alt="Atendente"
+            >
+
+
+            <div class="profile-info">
+
+
+                <strong>
+                    Fernanda Oliveira
+                </strong>
+
+
+                <span>
+                    Atendente do Programa Libera Brasil
+                </span>
+
+
+            </div>
+
+
+        </header>
+
+
+        <section
+            id="chat"
+            class="chat-messages"
+        ></section>
+
+
+        <div
+            id="typing"
+            class="typing hidden"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+    </main>
+
+
+    <!--
+    =========================================================
+    RODAPÉ
+    =========================================================
+    -->
+
+    <footer class="gov-footer">
+
+
+        <div class="gov-footer-content">
+
+
+            <img
+                class="gov-footer-icon"
+                src="https://i.postimg.cc/BZMVKbZ5/logo2.webp"
+                alt=""
+            >
+
+
+            <div class="gov-footer-text">
+
+
+                <span>
+                    Todo o conteúdo deste site está publicado sob a licença
+                </span>
+
+
+                <strong>
+                    Sistema de Renegociação — Todos os direitos reservados
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+    </footer>
+
+
+    <!--
+    =========================================================
+    SCRIPT PRINCIPAL
+    =========================================================
+    -->
+
+    <script src="script.js"></script>
+
+
+    <!--
+    =========================================================
+    NOME DO USUÁRIO NO TOPO
+    =========================================================
+    -->
+
+    <script>
+
+        const nomeUsuario =
+            sessionStorage.getItem("chat_demo_name");
+
+
+        if (nomeUsuario) {
+
+            document.getElementById(
+                "gov-profile-name"
+            ).textContent = nomeUsuario;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

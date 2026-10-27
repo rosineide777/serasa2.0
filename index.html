@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libera Brasil</title>
+
+    <link rel="icon" type="image/png" href="./imagens/imagem1.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonte Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#d8006f] min-h-screen flex flex-col items-center justify-center p-4 m-0">
+
+    <!-- Container Principal do Card -->
+    <main class="w-full max-w-sm sm:max-w-md my-auto flex flex-col items-center">
+        
+        <!-- Quadrado Rosa com a Imagem que Sobrepõe o Card Branco -->
+        <div class="relative w-64 h-64 sm:w-72 sm:h-72 -mb-20 z-20 flex justify-center items-end">
+            
+            <!-- Quadrado Rosa de Fundo -->
+            <div class="absolute inset-0 bg-[#e61c7e] rounded-[36px] z-0"></div>
+            
+            <!-- Imagem da Pessoa (Garante que fique em cima do quadrado e avance sobre o card branco) -->
+            <img 
+                src="./imagens/imagem1.png" 
+                alt="Pessoa segurando celular" 
+                class="relative w-full h-full object-cover rounded-[36px] z-10 block"
+            >
+        </div>
+
+        <!-- Card Branco Principal (Fica atrás da parte inferior da imagem) -->
+        <div class="bg-white rounded-3xl shadow-2xl pt-24 pb-8 px-6 sm:px-8 w-full text-center flex flex-col items-center relative z-10">
+            
+            <!-- Badge "Programa Social" -->
+            <span class="bg-[#fce4ec] text-[#e61c7e] text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full mb-4 inline-block">
+                Programa Social
+            </span>
+
+            <!-- Título Principal -->
+            <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-[#d8006f] uppercase mb-4">
+                Libera Brasil
+            </h1>
+
+            <!-- Texto Descritivo -->
+            <p class="text-gray-700 text-sm sm:text-base leading-relaxed font-medium mb-6">
+                Você tem direito de regularizar suas pendências por 
+                <span class="text-[#d8006f] font-bold">menos de R$70 independente</span> 
+                do valor total da dívida
+            </p>
+
+            <!-- Botão Principal -->
+            <a 
+                href="./index2.html" 
+                class="w-full bg-gradient-to-b from-[#f72585] to-[#d8006f] hover:from-[#e01e75] hover:to-[#be0061] text-white font-extrabold text-base sm:text-lg py-4 px-6 rounded-2xl transition-all duration-200 shadow-md hover:shadow-xl uppercase tracking-wider block text-center"
+            >
+                Verificar
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
