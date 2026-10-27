@@ -741,7 +741,7 @@ async function fluxoAudioInicial() {
     */
 
     await addAudio(
-        "audios/audio1.mpeg"
+        "audios/audio1.mp3"
     );
 
 
@@ -909,7 +909,7 @@ async function fluxoVerAcordo() {
     */
 
     await addAudio(
-        "audios/audio2.mpeg"
+        "audios/audio2.mp3"
     );
 
 
@@ -975,7 +975,7 @@ async function fluxoConfirmacaoAcordo() {
     */
 
     await addAudio(
-        "audios/audio3.mpeg"
+        "audios/audio3.mp3"
     );
 
 
@@ -1017,7 +1017,7 @@ async function fluxoResumo() {
     */
 
     await addAudio(
-        "audios/audio4.mpeg"
+        "audios/audio4.mp3"
     );
 
 
@@ -1073,7 +1073,7 @@ async function fluxoPagamentoAudio() {
     */
 
     await addAudio(
-        "audios/audio5.mpeg"
+        "audios/audio5.mp3"
     );
 
 
