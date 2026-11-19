@@ -792,9 +792,9 @@ async function fluxoAnalise() {
     );
 
 
-    await addMessage(
-        "Identificamos **dívidas ativas** no sistema. Os valores variam entre **R$ 1.728,74 a R$ 5.278,23** de dívida **em seu CPF.**"
-    );
+await addMessage(
+    "Identificamos **pendências financeiras ativas** vinculadas ao seu CPF. Consulte os valores disponíveis e as condições especiais para regularização."
+);
 
 
     /*
